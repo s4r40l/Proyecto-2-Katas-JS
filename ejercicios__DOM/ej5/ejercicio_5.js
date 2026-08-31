@@ -38,7 +38,7 @@ gallery.style.gap="20px";
 gallery.style.marginTop="50px";
 page.appendChild(gallery);
 
-albums.forEach((album,i)=>{
+albums.forEach((album)=>{
   const card=document.createElement("div");
   card.style.background="#317531";
   card.style.border="1px solid #003300";
@@ -48,13 +48,6 @@ albums.forEach((album,i)=>{
   card.style.transition="0.3s";
   card.style.cursor="pointer";
   gallery.appendChild(card);
-
-  const img=document.createElement("img");
-  img.src=`https://picsum.photos/300/200?random=${i+1}`;
-  img.style.width="100%";
-  img.style.borderRadius="8px";
-  img.style.marginBottom="10px";
-  card.appendChild(img);
 
   const h3=document.createElement("h3");
   h3.textContent=album.title;
@@ -87,14 +80,12 @@ albums.forEach((album,i)=>{
     const showingInfo=info.style.display==="block";
     if(showingInfo){
       info.style.display="none";
-      img.style.display="block";
       h3.style.display="block";
       btn.textContent="Mostrar info";
     }else{
       info.style.display="block";
-      img.style.display="none";
       h3.style.display="none";
-      btn.textContent="Mostrar imagen";
+      btn.textContent="Mostrar título";
     }
   });
 });
@@ -132,6 +123,7 @@ toggleBtn.addEventListener("click",()=>{
       card.style.border="1px solid #ffb6cf";
       card.style.color="#000";
       card.querySelector("p").style.color="#222";
+      card.querySelector("h3").style.display="block";
     });
 
   }else{
@@ -147,6 +139,7 @@ toggleBtn.addEventListener("click",()=>{
       card.style.border="1px solid #003300";
       card.style.color="#fff";
       card.querySelector("p").style.color="#d0d0d0";
+      card.querySelector("h3").style.display="block";
     });
   }
 });
